@@ -1,9 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:myshop/screens/home.dart';
+import 'package:myshop/screens/home/home_bloc.dart';
+
+import 'navigator/mynavigator.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(App());
 }
 
+class App extends StatelessWidget 
+{
+  @override
+  Widget build(BuildContext context) 
+  {
+    return MultiBlocProvider
+    (
+      providers: 
+      [
+        BlocProvider<HomeBloc>(
+          create: (BuildContext context) => HomeBloc(),
+        ),
+        
+      ],
+    
+      child: MyNavigator()
+    );
+  }
+}
+/*
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -112,4 +137,4 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
-}
+}*/
